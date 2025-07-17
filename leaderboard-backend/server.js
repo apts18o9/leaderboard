@@ -1,6 +1,6 @@
 //main server file
 
-require('dotenv').config
+require('dotenv').config()
 const express = require('express')
 const mongoose = require('mongoose')
 const cors = require('cors')
@@ -10,19 +10,17 @@ const PointHistory = require('./models/PointHistory')
 
 const app = express()
 const PORT = process.env.PORT || 5000;
-// const MONGO_URI = process.env.MONGO_URI 
+const MONGO_URI = process.env.MONGO_URI
 
 app.use(cors())
 app.use(express.json());
 
 mongoose.connect(MONGO_URI, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true
+    useNewUrlParser: true, 
+    useUnifiedTopology: true 
 })
-
-    .then(() => console.log('MongoDB Connected Successfully!'))
-    .catch(err => console.error('MongoDB Connection Error:', err));
-
+.then(() => console.log('MongoDB Connected Successfully!'))
+.catch(err => console.error('MongoDB Connection Error:', err));
 
 
 //API ROUTES TO ADD USER, TO SEE ALL USERS and LEADERBOARD
@@ -99,7 +97,7 @@ app.post('/api/users/:id/claim-points', async (req, res) => {
 
 
         //creating history entry for points recoverd
-        const historyEvent = new PointHistoy({
+        const historyEvent = new PointHistory({
             userId: user._id,
             userName: user.name,
             pointsClaimed: randomPoints
