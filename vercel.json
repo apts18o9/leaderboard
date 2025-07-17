@@ -1,0 +1,35 @@
+{
+  "version": 2,
+  "projects": [
+    {
+      "name": "leaderboard-backend",
+      "rootDirectory": "leaderboard-backend",
+      "buildCommand": "npm install",
+      "outputDirectory": "build",
+      "framework": "node",
+      "builds": [
+        {
+          "src": "server.js",
+          "use": "@vercel/node"
+        }
+      ],
+      "routes": [
+        {
+          "src": "/api/(.*)",
+          "dest": "leaderboard-backend/server.js"
+        },
+        {
+          "src": "/(.*)",
+          "dest": "leaderboard-backend/server.js"
+        }
+      ]
+    },
+    {
+      "name": "leaderboard-frontend",
+      "rootDirectory": "leaderboard-frontend",
+      "buildCommand": "npm install && npm run build",
+      "outputDirectory": "build",
+      "framework": "create-react-app"
+    }
+  ]
+}
