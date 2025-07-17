@@ -25,6 +25,13 @@ mongoose.connect(MONGO_URI, {
 
 //API ROUTES TO ADD USER, TO SEE ALL USERS and LEADERBOARD
 
+//health check api
+app.get('/', (req, res) => {
+    res.send('Leaderboard Backend API is running!');
+});
+
+
+
 //api to get all users
 
 app.get('/api/users', async (req, res) => {
