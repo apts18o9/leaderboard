@@ -19,14 +19,15 @@ const allowedOrigins = [
 
 app.use(cors({
     origin: function (origin, callback) {
+        // Allow requests with no origin (like Postman or curl) or from allowed origins
         if (!origin || allowedOrigins.includes(origin)) {
             return callback(null, true);
         }
-        const msg = 'The CORS policy for this site does not allow access from the specified Origin.';
+        const msg = `The CORS policy for this site does not allow access from the specified Origin: ${origin}`;
         return callback(new Error(msg), false);
     },
-    methods: ['GET', 'POST'],
-    credentials: true
+    methods: ['GET', 'POST'], // Specify allowed HTTP methods
+    credentials: true 
 }));
 
 app.use(express.json());
