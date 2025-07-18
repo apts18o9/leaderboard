@@ -9,7 +9,8 @@
       "src": "leaderboard-frontend/package.json",
       "use": "@vercel/static-build",
       "config": {
-        "outputDirectory": "build"
+        "outputDirectory": "build",
+        "buildCommand": "npm run build --verbose"
       }
     }
   ],
