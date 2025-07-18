@@ -2,15 +2,15 @@
   "version": 2,
   "builds": [
     {
+      "src": "leaderboard-backend/server.js",
+      "use": "@vercel/node"
+    },
+    {
       "src": "leaderboard-frontend/package.json",
       "use": "@vercel/static-build",
       "config": {
-        "distDir": "leaderboard-frontend/build"
+        "outputDirectory": "build" 
       }
-    },
-    {
-      "src": "leaderboard-backend/server.js",
-      "use": "@vercel/node"
     }
   ],
   "routes": [
@@ -21,10 +21,6 @@
     {
       "src": "/(.*)",
       "dest": "leaderboard-frontend/build/$1"
-    },
-    {
-      "src": "/(.*)",
-      "dest": "leaderboard-frontend/build/index.html"
     }
   ]
 }
