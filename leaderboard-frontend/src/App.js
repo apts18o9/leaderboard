@@ -3,7 +3,7 @@ import { ChevronDown, Plus, Trophy, Sparkles, UserPlus } from 'lucide-react';
 
 // Base URL backend API
 const API_BASE_URL = process.env.NODE_ENV === 'production'
-    ? 'https://leaderboard-backend-ripd.onrender.com/api' 
+    ? 'https://leaderboard-backend-ripd.onrender.com' 
     : 'http://localhost:5000/api';
 
 const App = () => {
