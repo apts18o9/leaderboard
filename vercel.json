@@ -9,7 +9,7 @@
       "src": "leaderboard-frontend/package.json",
       "use": "@vercel/static-build",
       "config": {
-        "outputDirectory": "build" 
+        "outputDirectory": "build"
       }
     }
   ],
@@ -21,6 +21,10 @@
     {
       "src": "/(.*)",
       "dest": "leaderboard-frontend/build/$1"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "leaderboard-frontend/build/index.html"
     }
   ]
 }
