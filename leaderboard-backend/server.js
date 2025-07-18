@@ -13,12 +13,17 @@ const PORT = process.env.PORT || 5000;
 const MONGO_URI = process.env.MONGO_URI
 
 const allowedOrigins = [
-    'http://localhost:3000',
-    'https://leaderboard-frontend-3d2o.onrender.com/' 
+    'http://localhost:3000', // For local frontend development
+    'https://leaderboard-frontend-3d2o.onrender.com' // <--- CRUCIAL: Your deployed frontend URL
 ];
 
 app.use(cors({
     origin: function (origin, callback) {
+        // --- START DEBUGGING LOGS ---
+        console.log('Incoming request origin:', origin);
+        console.log('Allowed origins:', allowedOrigins);
+        // --- END DEBUGGING LOGS ---
+
         // Allow requests with no origin (like Postman or curl) or from allowed origins
         if (!origin || allowedOrigins.includes(origin)) {
             return callback(null, true);
@@ -27,11 +32,12 @@ app.use(cors({
         return callback(new Error(msg), false);
     },
     methods: ['GET', 'POST'], // Specify allowed HTTP methods
-    credentials: true 
+    credentials: true
 }));
 
-app.use(express.json());
 
+app.use(express.json());
+//mongo db connection
 mongoose.connect(MONGO_URI, {
     useNewUrlParser: true, 
     useUnifiedTopology: true 
