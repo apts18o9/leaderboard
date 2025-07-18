@@ -2,7 +2,9 @@ import React, { useState, useEffect, useCallback } from 'react';
 import { ChevronDown, Plus, Trophy, Sparkles, UserPlus } from 'lucide-react';
 
 // Base URL backend API
-const API_BASE_URL = 'http://localhost:5000/api';
+const API_BASE_URL = process.env.NODE_ENV === 'production'
+    ? 'https://leaderboard-backend-ripd.onrender.com/api' 
+    : 'http://localhost:5000/api';
 
 const App = () => {
     const [users, setUsers] = useState([]);
